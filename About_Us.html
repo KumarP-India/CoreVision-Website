@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - CoreVision</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+    
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: 'Poppins', sans-serif;
+            background: black;
+            color: white;
+            overflow-x: hidden;
+        }
+        .nav {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+        }
+        .nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2em;
+            padding: 10px 0;
+        }
+        .section {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            text-align: center;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .section img {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 10px;
+        }
+        .section h1 {
+            margin-bottom: 20px;
+            font-size: calc(2em + 1.5vw);
+        }
+        .section p {
+            font-size: 1.2em;
+        }
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+        }
+        .bio {
+            max-width: 600px;
+            margin-top: 20px;
+            font-size: 1em;
+        }
+        .contact {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+        .contact a {
+            color: white;
+            text-decoration: none;
+            border: 1px solid white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            transition: background 0.3s, color 0.3s;
+            font-size: 1.2em;
+        }
+        .contact a:hover {
+            background: white;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <a href="./index.html#Welcome">Home</a>
+        <a href="./index.html#AboutUs">About Us</a>
+        <a href="./index.html#Donate">Donation</a>
+        <a href="./index.html#BS">Business Page</a>
+    </div>
+
+    <div class="section" style="background-image: url('./Assets/AboutUS-Home.png');">
+        <h1>About Us</h1>
+        <p>Scroll to get to know minds behind CoreVision</p>
+    </div>
+
+    <div class="section glass" style="background-image: url('./Assets/AboutUS-Prabhas.png');">
+        <h1>Prabhas Kumar</h1>
+        <div class="bio">
+            <!-- Prabhas Kumar's Bio -->
+            <p>Hello, I am Prabhas Kumar. From a young age, I was captivated by the intricacies of technology and its potential to solve complex problems. This passion led me to pursue in-depth studies in computer science and engineering, where I excelled in various technical and leadership roles. As a co-founder of CoreVision, I bring my expertise in software development and project management to our mission of making advanced design tools more accessible and intuitive. Together with Aksh, we strive to innovate and push the boundaries of what’s possible in the realm of digital design and engineering.</p>
+        </div>
+    </div>
+
+    <div class="section glass" style="background-image: url('./Assets/AboutUS-Aksh.png');">
+        <h1>Aksh Singh</h1>
+        <div class="bio">
+            <!-- Aksh Singh's Bio -->
+            <p>Hello, I am Aksh Singh. I’ve always been driven by a relentless curiosity for technology. It began with scavenging electronics and modifying toy cars, evolving into mastering microcontrollers and drones. By 9th grade, my passion led me to design high-altitude rockets, employing advanced CAD modeling, fluid dynamics, guidance systems, and return-to-launch capabilities. Along the way, I interacted with visionary leaders like Tory Bruno, CEO of ULA, and absorbed insights from MIT graduates. Realizing the need for more intuitive design tools, I co-founded CoreVision with my friend, Prabhas Kumar. Our mission is simple yet profound: to revolutionize how creators interact with their designs, making sophisticated technology accessible and immersive.</p>
+        </div>
+    </div>
+
+    <div class="section" style="background-image: url('./Assets/AboutUS-Contact.png');">
+        <h1>Get in Touch</h1>
+        <div class="contact">
+            <p>Call: +91 76674 47235</p>
+            <p>Email: kumar.prabhas.india@gmail.com</p>
+            <a href="./index.html#BS">Let's Collaborate</a>
+        </div>
+    </div>
+</body>
+</html>

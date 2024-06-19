@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoreVision - NexusCAD & VisionCAD</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        section {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        .nav {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: space-between;
+            width: 600px; /* Adjust the width as needed */
+            margin: 0 auto;
+            gap: 60px;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+        }
+        .nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2em;
+            padding: 10px 0; /* Ensure the height matches the text */
+        }
+        .ruler {
+            position: fixed;
+            right: 40px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 1000;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.35);
+            border-radius: 25px;
+        }
+        .ruler div {
+            width: 16px;
+            height: 16px;
+            border-radius: 8px;
+            background: #ccc;
+            margin: 10px 0;
+            transition: background 0.3s, transform 0.3s;
+            cursor: pointer;
+        }
+        .ruler .active {
+            background: #000;
+            transform: scale(1.2);
+        }
+        #welcome {
+            background: url('./Assets/CoreVision.webp') no-repeat center center/cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        #welcome h1, #welcome p {
+            font-family: 'Poppins', sans-serif;
+            font-size: calc(2em + 2vw); /* Dynamically scale font size */
+            margin: 0;
+            animation: slide-up 2s ease-out;
+            color: black;
+            background: rgba(230, 218, 148, 0.2); /* Very small translucent background */
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        #welcome p {
+            font-size: calc(1em + 1vw); /* Dynamically scale font size */
+            animation: slide-up 2s ease-out 0.5s;
+        }
+        @keyframes slide-up {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        #nexuscad, #visioncad {
+            background-size: cover;
+            position: relative;
+        }
+        #nexuscad::before, #visioncad::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: inherit;
+            filter: blur(10px);
+            z-index: -1;
+        }
+        #nexuscad .content, #visioncad .content {
+            width: 45%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+        }
+        #nexuscad .title, #visioncad .title {
+            font-size: calc(1em + 1vw); /* Dynamically scale font size */
+            text-align: left;
+            font-family: 'Poppins', sans-serif;
+            color: whitesmoke;
+            background: rgba(0, 0, 0, 0.2); /* Background to match the height of the font */
+            padding: 10px 20px; /* Adjust padding as necessary */
+            border-radius: 5px;
+        }
+        #nexuscad .box, #visioncad .box {
+            width: 40%; /* Reduced width to fit dynamically */
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            padding: 20px;
+            color: whitesmoke;
+            box-sizing: border-box;
+            z-index: 1;
+            margin-left: 40px; /* Increased padding to prevent touching the ruler */
+            font-size: calc(0.8em + 0.5vw); /* Dynamically scale font size */
+            text-align: left;
+        }
+        #visioncad .box {
+            color: black;
+            margin-right: 40px; /* Adjust padding to prevent touching the ruler */
+        }
+        #donation {
+            background: url('./Assets/Donation.png') no-repeat center center/cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+        #donation h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: calc(1.5em + 1.5vw);
+            margin-bottom: 20px;
+            color: black;
+        }
+        #donation p {
+            font-family: 'Poppins', sans-serif;
+            font-size: calc(0.8em + 0.5vw);
+            margin-bottom: 20px;
+            color: black;
+            text-align: center;
+            max-width: 800px;
+        }
+        #donation a {
+            font-family: 'Poppins', sans-serif;
+            font-size: calc(0.8em + 0.8vw);
+            color: black;
+            text-decoration: none;
+            border: 2px solid black;
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        #end {
+            background: url('./Assets/end.png') no-repeat center center/cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #000;
+            padding: 0 20px; /* Adding padding for margin */
+            text-align: center;
+        }
+        #end h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: calc(2em + 2vw); /* Dynamically scale font size */
+            margin: 0;
+            color: #fff;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        #end p {
+            font-family: 'Poppins', sans-serif;
+            font-size: calc(1em + 1vw); /* Dynamically scale font size */
+            margin: 20px 0;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 5px 10px;
+            border-radius: 5px;
+            display: inline-block;
+            color: #fff;
+            max-width: 60%; /* Ensure text does not touch the ruler */
+        }
+        .button {
+            background-color: #fff;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+        .modal-content {
+            background-color: rgba(255, 255, 255, 0.9);
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 90%;
+            max-width: 900px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+            position: relative;
+        }
+        .modal-content .left {
+            flex: 1;
+            text-align: left;
+        }
+        .modal-content .left h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5em;
+            margin: 0 0 10px;
+            color: #000;
+        }
+        .modal-content .left p {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1em;
+            margin: 0;
+            color: #000;
+        }
+        .modal-content .right {
+            flex: 2;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #000;
+            font-size: 0.9em;
+        }
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="tel"],
+        .form-group input[type="number"],
+        .form-group select {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: none;
+            border-bottom: 2px solid #000;
+            background: none;
+            font-size: 1em;
+        }
+        .form-group input[type="radio"] {
+            margin-right: 5px;
+        }
+        .form-group input[type="radio"] + label {
+            margin-right: 20px;
+            font-size: 0.9em;
+            display: inline-block;
+        }
+        .radio-group {
+            display: flex;
+            align-items: center;
+        }
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Function to handle redirection
+            const handleRedirection = () => {
+                // Check if there's a hash in the URL
+                if (window.location.hash) {
+                    // Extract the hash value
+                    const sectionId = window.location.hash.substring(1);
+    
+                    // if #Welcome then remove welcome and refresh the page
+                    if (sectionId === "Welcome") {
+                        // reload the page without the hash
+                        window.location.href = './index.html';
+                    } else if (sectionId === "AboutUs") {
+                        window.location.href = './About_Us.html';
+                    } else if (sectionId === "Donate") {
+                        window.location.href = './Donation.html';
+                    } else if (sectionId === "BS") {
+                        window.location.href = './Business.html';
+                    } else {
+                        // If none of the above conditions are met, go to the page specified by the hash
+                        window.location.href = `./${sectionId}.html`;
+                    }
+                }
+            };
+    
+            // Handle redirection on initial page load
+            handleRedirection();
+    
+            // Add event listener for hash change
+            window.addEventListener('hashchange', handleRedirection);
+        });
+    </script>
+    
+</head>
+<body>
+    <div class="nav">
+        <a href="#Welcome">Home</a>
+        <a href="#AboutUs">About Us</a>
+        <a href="#Donate">Donation</a>
+        <a href="#BS">Business Page</a>
+    </div>
+    <div class="ruler">
+        <div class="active"></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    
+    <section id="welcome">
+        <h1>CoreVision</h1>
+        <p>Prabhas Kumar & Aksh Singh</p>
+    </section>
+    
+    <section id="nexuscad" style="background: url('./Assets/NexusCAD.webp') no-repeat center center/cover;">
+        <div class="content">
+            <h2 class="title">NexusCAD</h2>
+        </div>
+        <div class="box">
+            <p>NexusCAD redefines CAD design on MacOS by combining the power and precision of top-tier CAD applications with unmatched ease of use, all at a more affordable price. Offering robust features that cater to designers, engineers, and creators without compromising on performance, NexusCAD is the superior, cost-effective choice. Prioritizing your privacy as never seen before, NexusCAD ensures a secure and efficient design experience. Discover the future of CAD design with NexusCAD, where innovation, affordability, and unparalleled privacy converge.</p>
+        </div>
+    </section>
+    
+    <section id="visioncad" style="background: url('./Assets/VisionCAD.webp') no-repeat center center/cover;">
+        <div class="box">
+            <p>VisionCAD revolutionizes CAD design by harnessing the power of VisionOS and Vision Pro devices, immersing you in an augmented reality environment that brings your creations to life in your physical space. More than just a visualization tool, VisionCAD is a comprehensive suite that combines the power and precision of top-tier CAD applications with unmatched ease of use and affordability. With advanced AI integration, VisionCAD significantly reduces creation time, streamlining your design process. Prioritizing your privacy as never seen before, VisionCAD ensures a secure and efficient design experience. Discover the future of augmented reality design with VisionCAD, where the cutting-edge technology of VisionOS and Vision Pro, affordability, AI-driven efficiency, and unparalleled privacy converge.</p>
+        </div>
+        <div class="content">
+            <h2 class="title">VisionCAD</h2>
+        </div>
+    </section>
+    
+    <section id="donation">
+        <h2>First Step</h2>
+        <p>The first step is always the hardest. Be the hand that helps us take it. Even a small touch can make a huge difference in someone's journey.</p>
+        <p>We created this project because we believe humanity deserves better. Yet, finding purpose and meaning is often elusive. Become that beacon for us. Give us the motivation to push forward. Be the reason we wake up every day to work on this. Fuel our passion with your support.</p>
+        <p>In a world mired in bureaucracy, corruption, and greed, it's not easy to fight back, especially for college kids like us. Support us in this battle—let's conquer the unfairness of the world, even if just once.</p>
+        <a href="./Donation.html">Support Us <span>&#8599;</span></a>
+    </section>
+    
+    <section id="end">
+        <h2>Launching soon!</h2>
+        <p>NexusCAD & VisionCAD both are under development and we are trying to launch as soon as possible.</p>
+        <button class="button" id="notifyMe">Notify Me</button>
+    </section>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="left">
+                <h3>Get Notified</h3>
+                <p>We will give you timely updates</p>
+            </div>
+            <div class="right">
+                <form id="notifyForm">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number (optional)</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label>Preferred Contact Method (optional)</label>
+                        <div class="radio-group">
+                            <input type="radio" id="whatsapp" name="contact_method" value="whatsapp">
+                            <label for="whatsapp">WhatsApp</label>
+                            <input type="radio" id="imessage" name="contact_method" value="imessage">
+                            <label for="imessage">iMessage</label>
+                            <input type="radio" id="sms" name="contact_method" value="sms">
+                            <label for="sms">SMS</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="gender">Gender (optional)</label>
+                        <select id="gender" name="gender">
+                            <option value="">Select Gender</option>
+                            <option value="female">Female</option>
+                            <option value="male">Male</option>
+                            <option value="transgender">Transgender</option>
+                            <option value="none">None of the above</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Age (optional)</label>
+                        <input type="number" id="age" name="age" min="11" max="91">
+                    </div>
+                    <div class="form-group">
+                        <label for="country">Country (optional)</label>
+                        <select id="country" name="country">
+                            <!-- Country options will be populated here -->
+                        </select>
+                    </div>
+                    <button type="submit" class="button">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('section');
+            const rulerItems = document.querySelectorAll('.ruler div');
+            const options = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.5
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const index = Array.from(sections).indexOf(entry.target);
+                        rulerItems.forEach((ruler, i) => {
+                            ruler.classList.toggle('active', i === index);
+                        });
+                    }
+                });
+            }, options);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+            rulerItems.forEach((ruler, index) => {
+                ruler.addEventListener('click', function() {
+                    sections[index].scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+        });
+
+        var modal = document.getElementById("myModal");
+        var btn = document.getElementById
+
+("notifyMe");
+        var span = document.getElementsByClassName("close")[0];
+
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        document.getElementById('notifyForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var age = document.getElementById('age').value;
+
+            if (!name || !email) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+
+            if (age < 11 || age > 91) {
+                if (age){
+                    alert('Age must be between 11 and 91.');
+                    return;
+                }
+            }
+
+            var phone = document.getElementById('phone').value;
+            if (phone && !/^\+\d{1,3}\s?\d{5}\s?\d{5}$/.test(phone)) {
+                alert('Please enter a valid phone number.');
+                return;
+            }
+
+            alert('Form submitted successfully!');
+            modal.style.display = 'none';
+        });
+
+        fetch('https://restcountries.com/v3.1/all')
+            .then(response => response.json())
+            .then(data => {
+                var countrySelect = document.getElementById('country');
+                data.sort((a, b) => a.name.common.localeCompare(b.name.common));
+                data.forEach(country => {
+                    var option = document.createElement('option');
+                    option.value = country.cca2;
+                    option.text = country.name.common;
+                    countrySelect.add(option);
+                });
+
+                var noOption = document.createElement('option');
+                noOption.value = '0';
+                noOption.text = 'Select Country';
+                noOption.selected = true;
+                countrySelect.insertBefore(noOption, countrySelect.firstChild);
+            })
+            .catch(error => console.error('Error fetching countries:', error));
+    </script>
+</body>
+</html>

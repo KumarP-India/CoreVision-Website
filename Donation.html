@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoreVision - Donate</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .nav {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: space-between;
+            width: 600px;
+            margin: 0 auto;
+            gap: 60px;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+        }
+        .nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2em;
+            padding: 10px 0;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            background: url('./Assets/donation-page.webp') no-repeat center center/cover;
+            color: #fff;
+            min-height: 100vh;
+            padding-top: 100px; /* Adjust this value as needed */
+        }
+        .content {
+            background: rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 800px;
+            width: 100%;
+        }
+        h1, p {
+            margin: 10px 0;
+            color: black;
+        }
+        .details {
+            text-align: left;
+            margin-top: 20px;
+            color: black;
+        }
+        .details div {
+            margin-bottom: 10px;
+        }
+        .button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1em;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .supporters {
+            margin-top: 20px;
+            color: black;
+        }
+        .supporters p2 {
+            background-color: rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            border-radius: 50px;
+            color: whitesmoke;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <a href="./index.html#Welcome">Home</a>
+        <a href="./index.html#AboutUs">About Us</a>
+        <a href="./index.html#Donate">Donation</a>
+        <a href="./index.html#BS">Business Page</a>
+    </div>
+
+    <div class="container">
+        <div class="content">
+            <h1>Donation Information</h1>
+            <p>If you are in India, you can make a donation using the following UPI ID or bank details (IMPS). We deeply appreciate your support and care for this project. If you wish to have your name displayed below as a token of our gratitude, please let us know. If you prefer to remain anonymous, kindly inform us via SMS, iMessage, or WhatsApp, and we will respect your privacy. Thank you once again for your generosity.</p>
+            <p><strong>For non-Indian donors</strong>, please contact us directly to arrange your donation. We will provide you with the necessary details to ensure a smooth transaction.</p>
+            
+            <div class="details">
+                <div><strong>UPI ID:</strong> 7667447235@icici</div>
+                <div><strong>Bank Name:</strong> ICICI Bank</div>
+                <div><strong>Bank Account Number:</strong> 625901144947</div>
+                <div><strong>Bank IFSC Code:</strong> ICIC0000174</div>
+                <div><strong>Recipient Name:</strong> Prabhas Kumar</div>
+                <div><strong>Remark/Purpose of Transfer:</strong> Donation to CoreVision from [Your Name and Other Details]</div>
+            </div>
+
+            <div class="supporters">
+                <h2>Supporters</h2>
+                <p>We gratefully acknowledge the support of:</p>
+                <p2>Aksh Singh, Prabhas Kumar, Prajapati Kumar, Setu Kumari</p2>
+            </div>
+
+            <a href="./index.html#BS" class="button">Contact Us</a>
+        </div>
+    </div>
+</body>
+</html>

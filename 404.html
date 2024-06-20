@@ -32,6 +32,7 @@
             background: rgba(0, 0, 0, 0.2);
             padding: 5px 15px;
             border-radius: 20px;
+            align-items: center;
         }
         .nav a {
             color: #fff;
@@ -39,20 +40,85 @@
             font-size: 1.2em;
             padding: 10px 0;
         }
+        .home-button {
+            font-weight: bold;
+            font-size: 1.5em;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1003;
+            color: #fff;
+            cursor: pointer;
+        }
         dotlottie-player {
             width: 100%;
             height: 100%;
+        }
+        .menu-icon {
+            display: none;
+        }
+        /* Media queries for mobile and portrait mode */
+        @media (max-width: 768px), (orientation: portrait) {
+            .nav {
+                display: none;
+            }
+            .nav.mobile-nav {
+                display: none;
+                flex-direction: column;
+                gap: 10px;
+                position: fixed;
+                top: 60px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: rgba(0, 0, 0, 0.8);
+                border-radius: 10px;
+                padding: 10px;
+                z-index: 1001;
+            }
+            .nav a {
+                font-size: 1em;
+            }
+            .menu-icon {
+                display: block;
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                cursor: pointer;
+                font-size: 2em;
+                color: #fff;
+                z-index: 1002;
+            }
+            .home-button {
+                top: 20px;
+                text-align: center;
+            }
         }
     </style>
 </head>
 
 <body>
+    <div class="menu-icon">☰</div>
+    <div class="home-button" onclick="location.href='./index.html#Welcome'">CoreVision</div>
     <div class="nav">
         <a href="./index.html#Welcome">Home</a>
         <a href="./index.html#AboutUs">About Us</a>
         <a href="./index.html#Donate">Donation</a>
         <a href="./index.html#BS">Business Page</a>
     </div>
+    <div class="nav mobile-nav">
+        <a href="./index.html#Welcome">Home</a>
+        <a href="./index.html#AboutUs">About Us</a>
+        <a href="./index.html#Donate">Donation</a>
+        <a href="./index.html#BS">Business Page</a>
+    </div>
     <dotlottie-player src="https://lottie.host/4c6265c0-7f1f-4535-8d88-fac39963af75/6XHACbWU1G.json" background="transparent" speed="1" loop autoplay></dotlottie-player>
+    <script>
+        // JavaScript to toggle the mobile menu
+        const menuIcon = document.querySelector('.menu-icon');
+        const mobileNav = document.querySelector('.mobile-nav');
+        menuIcon.addEventListener('click', () => {
+            mobileNav.style.display = mobileNav.style.display === 'flex' ? 'none' : 'flex';
+        });
+    </script>
 </body>
 </html>

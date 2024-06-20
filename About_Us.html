@@ -13,7 +13,7 @@
             width: 100%;
             height: 100%;
             font-family: 'Poppins', sans-serif;
-            background: black;
+            background: #002444;
             color: white;
             overflow-x: hidden;
         }
@@ -92,6 +92,25 @@
             background: white;
             color: black;
         }
+
+        @media (max-width: 768px), (orientation: portrait) {
+            .nav {
+                width: 90%;
+                gap: 10px;
+            }
+            .section {
+                padding: 10px;
+            }
+            .section h1 {
+                font-size: calc(1.5em + 1.5vw);
+            }
+            .section p, .bio {
+                font-size: 1em;
+            }
+            .contact {
+                font-size: 1em;
+            }
+        }
     </style>
 </head>
 <body>
@@ -102,12 +121,12 @@
         <a href="./index.html#BS">Business Page</a>
     </div>
 
-    <div class="section" style="background-image: url('./Assets/AboutUS-Home.png');">
+    <div class="section" style="background-image: url('/Assets/AboutUS-Home.png');">
         <h1>About Us</h1>
         <p>Scroll to get to know minds behind CoreVision</p>
     </div>
 
-    <div class="section glass" style="background-image: url('./Assets/AboutUS-Prabhas.png');">
+    <div class="section glass" style="background-image: url('/Assets/AboutUS-Prabhas.png');">
         <h1>Prabhas Kumar</h1>
         <div class="bio">
             <!-- Prabhas Kumar's Bio -->
@@ -115,7 +134,7 @@
         </div>
     </div>
 
-    <div class="section glass" style="background-image: url('./Assets/AboutUS-Aksh.png');">
+    <div class="section glass" style="background-image: url('/Assets/AboutUS-Aksh.png');">
         <h1>Aksh Singh</h1>
         <div class="bio">
             <!-- Aksh Singh's Bio -->
@@ -123,7 +142,7 @@
         </div>
     </div>
 
-    <div class="section" style="background-image: url('./Assets/AboutUS-Contact.png');">
+    <div class="section" style="background-image: url('/Assets/AboutUS-Contact.png');">
         <h1>Get in Touch</h1>
         <div class="contact">
             <p>Call: +91 76674 47235</p>

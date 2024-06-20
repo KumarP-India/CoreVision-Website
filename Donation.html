@@ -13,6 +13,8 @@
             height: 100%;
             font-family: 'Poppins', sans-serif;
             scroll-behavior: smooth;
+            background: #002444; /* Add background color */
+            color: #fff;
         }
         .nav {
             position: fixed;
@@ -21,9 +23,10 @@
             transform: translateX(-50%);
             display: flex;
             justify-content: space-between;
-            width: 600px;
+            width: 90%;
+            max-width: 600px;
             margin: 0 auto;
-            gap: 60px;
+            gap: 20px;
             z-index: 1000;
             background: rgba(0, 0, 0, 0.2);
             padding: 5px 15px;
@@ -87,6 +90,19 @@
             padding: 10px;
             border-radius: 50px;
             color: whitesmoke;
+        }
+
+        @media (max-width: 768px), (orientation: portrait) {
+            .nav {
+                width: 90%;
+                gap: 10px;
+            }
+            .container {
+                padding-top: 80px; /* Adjust padding for smaller screens */
+            }
+            .content {
+                padding: 10px;
+            }
         }
     </style>
 </head>

@@ -244,6 +244,30 @@
     .button:hover {
         background-color: #f0f0f0; /* Optional: Add a hover effect */
     }
+
+    @media (max-width: 768px), (orientation: portrait) {
+        section {
+            height: auto;
+            min-height: 100vh;
+        }
+        .nav {
+            width: 90%;
+            gap: 20px;
+        }
+        .ruler {
+            display: none;
+        }
+        #welcome h1, #welcome p {
+            font-size: calc(1.5em + 2vw); /* Adjust font size for smaller screens */
+        }
+        #nexuscad .box, #visioncad .box {
+            width: 90%; /* Adjust width for smaller screens */
+            margin: 20px;
+        }
+        #nexuscad .content, #visioncad .content {
+            width: 90%;
+        }
+    }
     </style>
     <script>
         document.addEventListener('DOMContentLoaded', () => {

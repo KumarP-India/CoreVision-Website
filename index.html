@@ -229,99 +229,21 @@
             cursor: pointer;
             margin-top: 20px;
         }
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgb(0, 0, 0);
-            background-color: rgba(0, 0, 0, 0.4);
-        }
-        .modal-content {
-            background-color: rgba(255, 255, 255, 0.9);
-            margin: 5% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 90%;
-            max-width: 900px;
-            border-radius: 10px;
-            display: flex;
-            flex-direction: row;
-            gap: 20px;
-            position: relative;
-        }
-        .modal-content .left {
-            flex: 1;
-            text-align: left;
-        }
-        .modal-content .left h3 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.5em;
-            margin: 0 0 10px;
-            color: #000;
-        }
-        .modal-content .left p {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1em;
-            margin: 0;
-            color: #000;
-        }
-        .modal-content .right {
-            flex: 2;
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            color: #000;
-            font-size: 0.9em;
-        }
-        .form-group input[type="text"],
-        .form-group input[type="email"],
-        .form-group input[type="tel"],
-        .form-group input[type="number"],
-        .form-group select {
-            width: 100%;
-            padding: 8px;
-            box-sizing: border-box;
-            border: none;
-            border-bottom: 2px solid #000;
-            background: none;
-            font-size: 1em;
-        }
-        .form-group input[type="radio"] {
-            margin-right: 5px;
-        }
-        .form-group input[type="radio"] + label {
-            margin-right: 20px;
-            font-size: 0.9em;
-            display: inline-block;
-        }
-        .radio-group {
-            display: flex;
-            align-items: center;
-        }
-        .close {
-            position: absolute;
-            top: 10px;
-            right: 20px;
-            color: #aaa;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
+        .button {
+        background-color: #fff;
+        color: #000;
+        border: none;
+        padding: 10px 20px;
+        font-size: 1em;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 20px;
+        text-decoration: none; /* Ensure links have no underline */
+        display: inline-block; /* Ensure it behaves like a button */
+    }
+    .button:hover {
+        background-color: #f0f0f0; /* Optional: Add a hover effect */
+    }
     </style>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -407,66 +329,8 @@
     <section id="end">
         <h2>Launching soon!</h2>
         <p>NexusCAD & VisionCAD both are under development and we are trying to launch as soon as possible.</p>
-        <button class="button" id="notifyMe">Notify Me</button>
+        <a href="https://forms.gle/J9zjqz68UnntC5LN7" class="button">Notify Me</a> 
     </section>
-
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <div class="left">
-                <h3>Get Notified</h3>
-                <p>We will give you timely updates</p>
-            </div>
-            <div class="right">
-                <form id="notifyForm">
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Phone Number (optional)</label>
-                        <input type="tel" id="phone" name="phone">
-                    </div>
-                    <div class="form-group">
-                        <label>Preferred Contact Method (optional)</label>
-                        <div class="radio-group">
-                            <input type="radio" id="whatsapp" name="contact_method" value="whatsapp">
-                            <label for="whatsapp">WhatsApp</label>
-                            <input type="radio" id="imessage" name="contact_method" value="imessage">
-                            <label for="imessage">iMessage</label>
-                            <input type="radio" id="sms" name="contact_method" value="sms">
-                            <label for="sms">SMS</label>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="gender">Gender (optional)</label>
-                        <select id="gender" name="gender">
-                            <option value="">Select Gender</option>
-                            <option value="female">Female</option>
-                            <option value="male">Male</option>
-                            <option value="transgender">Transgender</option>
-                            <option value="none">None of the above</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="age">Age (optional)</label>
-                        <input type="number" id="age" name="age" min="11" max="91">
-                    </div>
-                    <div class="form-group">
-                        <label for="country">Country (optional)</label>
-                        <select id="country" name="country">
-                            <!-- Country options will be populated here -->
-                        </select>
-                    </div>
-                    <button type="submit" class="button">Submit</button>
-                </form>
-            </div>
-        </div>
-    </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -499,101 +363,6 @@
                 });
             });
         });
-
-        var modal = document.getElementById("myModal");
-        var btn = document.getElementById
-
-("notifyMe");
-        var span = document.getElementsByClassName("close")[0];
-
-        btn.onclick = function() {
-            modal.style.display = "block";
-        }
-
-        span.onclick = function() {
-            modal.style.display = "none";
-        }
-
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-
-        document.getElementById('notifyForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            var name = document.getElementById('name').value;
-            var email = document.getElementById('email').value;
-            var age = document.getElementById('age').value;
-
-            if (!name || !email) {
-                alert('Please fill in all required fields.');
-                return;
-            }
-
-            if (age < 11 || age > 91) {
-                if (age){
-                    alert('Age must be between 11 and 91.');
-                    return;
-                }
-            }
-
-            var phone = document.getElementById('phone').value;
-            if (phone && !/^\+\d{1,3}\s?\d{5}\s?\d{5}$/.test(phone)) {
-                alert('Please enter a valid phone number.');
-                return;
-            }
-
-            alert('Form submitted successfully!');
-            modal.style.display = 'none';
-        });
-
-        fetch('https://restcountries.com/v3.1/all')
-            .then(response => response.json())
-            .then(data => {
-                var countrySelect = document.getElementById('country');
-                data.sort((a, b) => a.name.common.localeCompare(b.name.common));
-                data.forEach(country => {
-                    var option = document.createElement('option');
-                    option.value = country.cca2;
-                    option.text = country.name.common;
-                    countrySelect.add(option);
-                });
-
-                var noOption = document.createElement('option');
-                noOption.value = '0';
-                noOption.text = 'Select Country';
-                noOption.selected = true;
-                countrySelect.insertBefore(noOption, countrySelect.firstChild);
-            })
-            .catch(error => console.error('Error fetching countries:', error));
-
-            
-        document.getElementById('notifyForm').addEventListener('submit', function(event) {
-        event.preventDefault();
-        
-        var formData = new FormData(this);
-        var xhr = new XMLHttpRequest();
-        xhr.open('POST', 'http://your-raspberry-pi-ip:5000/submit-form', true); // TODO: Update the URL
-        xhr.setRequestHeader('Content-Type', 'application/json');
-        
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === 4) {
-                if (xhr.status === 200) {
-                    alert('Form submitted successfully!');
-                } else {
-                    console.warn('Failed to submit the form. Using AWS backup. The status code was:', xhr.status);
-                    // Fallback to AWS
-                    var awsXhr = new XMLHttpRequest();
-                    awsXhr.open('POST', 'https://your-aws-endpoint/submit-form', true); // TODO: Update the URL
-                    awsXhr.setRequestHeader('Content-Type', 'application/json');
-                    awsXhr.send(JSON.stringify(Object.fromEntries(formData)));
-                }
-            }
-        };
-        
-        xhr.send(JSON.stringify(Object.fromEntries(formData)));
-    });
     </script>
 </body>
 </html>

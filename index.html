@@ -229,6 +229,21 @@
             cursor: pointer;
             margin-top: 20px;
         }
+        .button {
+        background-color: #fff;
+        color: #000;
+        border: none;
+        padding: 10px 20px;
+        font-size: 1em;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 20px;
+        text-decoration: none; /* Ensure links have no underline */
+        display: inline-block; /* Ensure it behaves like a button */
+    }
+    .button:hover {
+        background-color: #f0f0f0; /* Optional: Add a hover effect */
+    }
     </style>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -314,7 +329,7 @@
     <section id="end">
         <h2>Launching soon!</h2>
         <p>NexusCAD & VisionCAD both are under development and we are trying to launch as soon as possible.</p>
-        <button class="button" id="notifyMe">Notify Me</button>
+        <a href="https://myform.mydomain.com" class="button">Notify Me</a> // TODO: Link to Google Form
     </section>
 
     <script>

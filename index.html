@@ -245,18 +245,26 @@
         background-color: #f0f0f0; /* Optional: Add a hover effect */
     }
     </style>
-    <script>
+     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Function to handle redirection
             const handleRedirection = () => {
+                const isMobile = window.innerWidth <= 768;
+                const currentUrl = window.location.href;
+                const hash = window.location.hash;
+
+                if (isMobile && !currentUrl.includes('index-mobile.html')) {
+                    window.location.href = 'index-mobile.html' + hash;
+                } else if (!isMobile && currentUrl.includes('index-mobile.html')) {
+                    window.location.href = 'index.html' + hash;
+                }
+            };
+
+            const handleHashRedirection = () => {
                 // Check if there's a hash in the URL
                 if (window.location.hash) {
-                    // Extract the hash value
                     const sectionId = window.location.hash.substring(1);
-    
-                    // if #Welcome then remove welcome and refresh the page
+
                     if (sectionId === "Welcome") {
-                        // reload the page without the hash
                         window.location.href = './index.html';
                     } else if (sectionId === "AboutUs") {
                         window.location.href = './About_Us.html';
@@ -265,27 +273,26 @@
                     } else if (sectionId === "BS") {
                         window.location.href = './Business.html';
                     } else {
-                        // If none of the above conditions are met, go to the page specified by the hash
                         window.location.href = `./${sectionId}.html`;
                     }
                 }
             };
-    
-            // Handle redirection on initial page load
-            handleRedirection();
-    
-            // Add event listener for hash change
-            window.addEventListener('hashchange', handleRedirection);
-        });
-        document.addEventListener('DOMContentLoaded', () => {
-            const handleRedirection = () => {
-                if (window.innerWidth <= 768) {
-                    window.location.href = 'index-mobile.html';
-                }
-            };
 
             handleRedirection();
+            handleHashRedirection();
             window.addEventListener('resize', handleRedirection);
+            window.addEventListener('hashchange', handleHashRedirection);
+
+            // JavaScript to toggle the mobile menu
+            const menuIcon = document.querySelector('.menu-icon');
+            const mobileNav = document.querySelector('.nav.mobile-nav');
+            menuIcon.addEventListener('click', () => {
+                if (mobileNav.style.display === 'none' || mobileNav.style.display === '') {
+                    mobileNav.style.display = 'flex';
+                } else {
+                    mobileNav.style.display = 'none';
+                }
+            });
         });
     </script>
     

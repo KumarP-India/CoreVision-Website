@@ -44,6 +44,7 @@
             z-index: 1003;
             color: #fff;
             cursor: pointer;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
         }
         .section {
             display: flex;
@@ -78,12 +79,14 @@
         .welcometitle {
             font-size: 3em;
             margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
         }
         .welcomebyline {
             font-size: 1.5em;
             margin-bottom: 20px;
             padding: 0 20px; /* Ensure text doesn't overflow */
             text-align: center;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
         }
         .step, .notify {
             padding: 20px;
@@ -153,17 +156,24 @@
     </style>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Function to handle redirection
             const handleRedirection = () => {
+                const isMobile = window.innerWidth <= 768;
+                const currentUrl = window.location.href;
+
+                if (isMobile && !currentUrl.includes('index-mobile.html')) {
+                    window.location.href = 'index-mobile.html';
+                } else if (!isMobile && currentUrl.includes('index-mobile.html')) {
+                    window.location.href = 'index.html';
+                }
+            };
+
+            const handleHashRedirection = () => {
                 // Check if there's a hash in the URL
                 if (window.location.hash) {
-                    // Extract the hash value
                     const sectionId = window.location.hash.substring(1);
-    
-                    // if #Welcome then remove welcome and refresh the page
+
                     if (sectionId === "Welcome") {
-                        // reload the page without the hash
-                        window.location.href = './index.html';
+                        window.location.href = './index-mobile.html';
                     } else if (sectionId === "AboutUs") {
                         window.location.href = './About_Us.html';
                     } else if (sectionId === "Donate") {
@@ -171,38 +181,15 @@
                     } else if (sectionId === "BS") {
                         window.location.href = './Business.html';
                     } else {
-                        // If none of the above conditions are met, go to the page specified by the hash
                         window.location.href = `./${sectionId}.html`;
                     }
                 }
             };
-    
-            // Handle redirection on initial page load
-            handleRedirection();
-    
-            // Add event listener for hash change
-            window.addEventListener('hashchange', handleRedirection);
-        });
-        document.addEventListener('DOMContentLoaded', () => {
-            const handleRedirection = () => {
-                if (window.innerWidth <= 768) {
-                    window.location.href = 'index-mobile.html';
-                }
-            };
 
             handleRedirection();
+            handleHashRedirection();
             window.addEventListener('resize', handleRedirection);
-        });
-        document.addEventListener('DOMContentLoaded', () => {
-            // Function to handle redirection
-            const handleRedirection = () => {
-                if (window.innerWidth > 768) {
-                    window.location.href = 'index.html';
-                }
-            };
-
-            handleRedirection();
-            window.addEventListener('resize', handleRedirection);
+            window.addEventListener('hashchange', handleHashRedirection);
 
             // JavaScript to toggle the mobile menu
             const menuIcon = document.querySelector('.menu-icon');
@@ -219,18 +206,18 @@
 </head>
 <body>
     <div class="menu-icon">☰</div>
-    <div class="home-button" onclick="location.href='./index.html#Welcome'">CoreVision</div>
+    <div class="home-button" onclick="location.href='./index-mobile.html#Welcome'">CoreVision</div>
     <div class="nav">
-        <a href="./index.html#Welcome">Home</a>
-        <a href="./index.html#AboutUs">About Us</a>
-        <a href="./index.html#Donate">Donation</a>
-        <a href="./index.html#BS">Business Page</a>
+        <a href="./index-mobile.html#Welcome">Home</a>
+        <a href="./index-mobile.html#AboutUs">About Us</a>
+        <a href="./index-mobile.html#Donate">Donation</a>
+        <a href="./index-mobile.html#BS">Business Page</a>
     </div>
     <div class="nav mobile-nav" style="display: none;">
-        <a href="./index.html#Welcome">Home</a>
-        <a href="./index.html#AboutUs">About Us</a>
-        <a href="./index.html#Donate">Donation</a>
-        <a href="./index.html#BS">Business Page</a>
+        <a href="./index-mobile.html#Welcome">Home</a>
+        <a href="./index-mobile.html#AboutUs">About Us</a>
+        <a href="./index-mobile.html#Donate">Donation</a>
+        <a href="./index-mobile.html#BS">Business Page</a>
     </div>
 
     <section class="welcome">
@@ -245,7 +232,9 @@
 
     <section class="section">
         <div class="title">VisionCAD</div>
-        <div class="description">VisionCAD revolutionizes CAD design by harnessing the power of VisionOS and Vision Pro devices, immersing you in an augmented reality environment that brings your creations to life in your physical space. More than just a visualization tool, VisionCAD is a comprehensive suite that combines the power and precision of top-tier CAD applications with unmatched ease of use and affordability. With advanced AI integration, VisionCAD significantly reduces creation time, streamlining your design process. Prioritizing your privacy as never seen before, VisionCAD ensures a secure and efficient design experience. Discover the future of augmented reality design with VisionCAD, where the cutting-edge technology of VisionOS and Vision Pro, affordability, AI-driven efficiency, and unparalleled privacy converge.</div>
+        <div class="description">VisionCAD revolutionizes CAD design by harnessing the power of VisionOS and Vision Pro devices, immersing you in an augmented reality environment that brings your creations to life in your physical space. More than just a visualization tool, VisionCAD is a comprehensive suite that combines the power and precision of top-tier CAD applications with unmatched ease of use and affordability. With advanced AI integration, VisionCAD significantly reduces creation time, streamlining your design process. Prioritizing your privacy as never seen before,
+
+ VisionCAD ensures a secure and efficient design experience. Discover the future of augmented reality design with VisionCAD, where the cutting-edge technology of VisionOS and Vision Pro, affordability, AI-driven efficiency, and unparalleled privacy converge.</div>
     </section>
 
     <section class="section step">
@@ -253,15 +242,13 @@
         <div class="description">The first step is always the hardest. Be the hand that helps us take it. Even a small touch can make a huge difference in someone's journey.</div>
         <div class="description">We created this project because we believe humanity deserves better. Yet, finding purpose and meaning is often elusive. Become that beacon for us. Give us the motivation to push forward. Be the reason we wake up every day to work on this. Fuel our passion with your support.</div>
         <div class="description">In a world mired in bureaucracy, corruption, and greed, it's not easy to fight back, especially for college kids like us. Support us in this battle—let's conquer the unfairness of the world, even if just once.</div>
-        <a href="./index.html#Donate" class="button">Support Us</a>
+        <a href="./index-mobile.html#Donate" class="button">Support Us</a>
     </section>
 
     <section class="section notify">
         <div class="title">Launching soon!</div>
         <div class="description">NexusCAD & VisionCAD both are under development and we are trying to launch as soon as possible.</div>
-        <a href="https://forms.gle/J9zjqz68UnntC5
-
-LN7" class="button">Notify Me</a>
+        <a href="https://forms.gle/J9zjqz68UnntC5LN7" class="button">Notify Me</a>
     </section>
 </body>
 </html>

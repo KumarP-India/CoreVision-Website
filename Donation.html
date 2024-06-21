@@ -20,10 +20,7 @@
             left: 50%;
             transform: translateX(-50%);
             display: flex;
-            justify-content: space-between;
-            width: 600px;
-            margin: 0 auto;
-            gap: 60px;
+            gap: 20px;
             z-index: 1000;
             background: rgba(0, 0, 0, 0.2);
             padding: 5px 15px;
@@ -34,6 +31,17 @@
             text-decoration: none;
             font-size: 1.2em;
             padding: 10px 0;
+        }
+        .home-button {
+            font-weight: bold;
+            font-size: 1.5em;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1003;
+            color: #fff;
+            cursor: pointer;
+            display: none;
         }
         .container {
             display: flex;
@@ -84,14 +92,69 @@
         }
         .supporters p2 {
             background-color: rgba(0, 0, 0, 0.1);
-            padding: 10px;
-            border-radius: 50px;
+            padding: 10px 20px;
+            border-radius: 25px;
             color: whitesmoke;
+            display: inline-block;
+            max-width: 100%;
+            word-wrap: break-word;
+            text-align: center;
+        }
+        .menu-icon {
+            display: none;
+        }
+        /* Media queries for mobile and portrait mode */
+        @media (max-width: 768px), (orientation: portrait) {
+            .nav {
+                display: none;
+            }
+            .nav.mobile-nav {
+                display: none;
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+                position: fixed;
+                top: 60px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: rgba(0, 0, 0, 0.8);
+                border-radius: 10px;
+                padding: 10px;
+                z-index: 1001;
+            }
+            .nav a {
+                font-size: 1em;
+                text-align: center;
+                width: 100%;
+            }
+            .menu-icon {
+                display: block;
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                cursor: pointer;
+                font-size: 2em;
+                color: #fff;
+                z-index: 1002;
+            }
+            .home-button {
+                display: block;
+                top: 20px;
+                text-align: center;
+            }
         }
     </style>
 </head>
 <body>
+    <div class="menu-icon">☰</div>
+    <div class="home-button" onclick="location.href='./index.html#Welcome'">CoreVision</div>
     <div class="nav">
+        <a href="./index.html#Welcome">Home</a>
+        <a href="./index.html#AboutUs">About Us</a>
+        <a href="./index.html#Donate">Donation</a>
+        <a href="./index.html#BS">Business Page</a>
+    </div>
+    <div class="nav mobile-nav" style="display: none;">
         <a href="./index.html#Welcome">Home</a>
         <a href="./index.html#AboutUs">About Us</a>
         <a href="./index.html#Donate">Donation</a>
@@ -122,5 +185,17 @@
             <a href="./index.html#BS" class="button">Contact Us</a>
         </div>
     </div>
+    <script>
+        // JavaScript to toggle the mobile menu
+        const menuIcon = document.querySelector('.menu-icon');
+        const mobileNav = document.querySelector('.nav.mobile-nav');
+        menuIcon.addEventListener('click', () => {
+            if (mobileNav.style.display === 'none' || mobileNav.style.display === '') {
+                mobileNav.style.display = 'flex';
+            } else {
+                mobileNav.style.display = 'none';
+            }
+        });
+    </script>
 </body>
 </html>

@@ -28,12 +28,25 @@
             background: rgba(0, 0, 0, 0.2);
             padding: 5px 15px;
             border-radius: 20px;
+            align-items: center;
         }
         .nav a {
             color: #fff;
             text-decoration: none;
             font-size: 1.2em;
             padding: 10px 0;
+        }
+        .home-button {
+            font-weight: bold;
+            font-size: 1.5em;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1003;
+            color: #fff;
+            cursor: pointer;
+            display: none;
+            background-color: rgba(0, 0, 0, 0.5);
         }
         .section {
             height: 100vh;
@@ -46,6 +59,7 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
+            width: 100%;
         }
         .section img {
             width: 100%;
@@ -64,6 +78,7 @@
             border-radius: 10px;
             padding: 20px;
             backdrop-filter: blur(10px);
+            width: 100%;
         }
         .bio {
             max-width: 600px;
@@ -92,10 +107,67 @@
             background: white;
             color: black;
         }
+        .menu-icon {
+            display: none;
+        }
+        /* Media queries for mobile and portrait mode */
+        @media (max-width: 768px), (orientation: portrait) {
+            .nav {
+                display: none;
+            }
+            .nav.mobile-nav {
+                display: none;
+                flex-direction: column;
+                gap: 10px;
+                position: fixed;
+                top: 60px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: rgba(37, 150, 190, 1);
+                border-radius: 10px;
+                padding: 10px;
+                z-index: 1001;
+            }
+            .nav a {
+                font-size: 1em;
+            }
+            .menu-icon {
+                display: block;
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                cursor: pointer;
+                font-size: 2em;
+                color: #fff;
+                z-index: 1002;
+            }
+            .home-button {
+                display: block;
+                top: 20px;
+                text-align: center;
+            }
+            .section {
+                padding: 5px;
+                text-align: center;
+                background-size: cover;
+                background-position: center center;
+            }
+            .bio {
+                padding: 0 20px;
+            }
+        }
     </style>
 </head>
 <body>
+    <div class="menu-icon">☰</div>
+    <div class="home-button" onclick="location.href='./index.html#Welcome'">CoreVision</div>
     <div class="nav">
+        <a href="./index.html#Welcome">Home</a>
+        <a href="./index.html#AboutUs">About Us</a>
+        <a href="./index.html#Donate">Donation</a>
+        <a href="./index.html#BS">Business Page</a>
+    </div>
+    <div class="nav mobile-nav">
         <a href="./index.html#Welcome">Home</a>
         <a href="./index.html#AboutUs">About Us</a>
         <a href="./index.html#Donate">Donation</a>
@@ -131,5 +203,13 @@
             <a href="./index.html#BS">Let's Collaborate</a>
         </div>
     </div>
+    <script>
+        // JavaScript to toggle the mobile menu
+        const menuIcon = document.querySelector('.menu-icon');
+        const mobileNav = document.querySelector('.nav.mobile-nav');
+        menuIcon.addEventListener('click', () => {
+            mobileNav.style.display = mobileNav.style.display === 'flex' ? 'none' : 'flex';
+        });
+    </script>
 </body>
 </html>

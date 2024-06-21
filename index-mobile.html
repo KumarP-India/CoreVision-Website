@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoreVision - NexusCAD & VisionCAD</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: 'Poppins', sans-serif;
+            background-color: #002444;
+            overflow-x: hidden;
+        }
+        .nav {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+        }
+        .nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2em;
+            padding: 10px 0;
+        }
+        .home-button {
+            font-weight: bold;
+            font-size: 1.5em;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1003;
+            color: #fff;
+            cursor: pointer;
+        }
+        .section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            height: 100vh;
+            color: white;
+        }
+        .title {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        .description {
+            font-size: 1em;
+            margin-bottom: 20px;
+            padding: 0 20px; /* Ensure text doesn't overflow */
+            text-align: center;
+        }
+        .welcome {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            height: 100vh;
+            color: white;
+        }
+        .welcometitle {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+        .welcomebyline {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            padding: 0 20px; /* Ensure text doesn't overflow */
+            text-align: center;
+        }
+        .step, .notify {
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 800px;
+            margin: 20px;
+            color: white;
+            text-align: center;
+        }
+        .button {
+            background-color: #fff;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none; /* Ensure links have no underline */
+            display: inline-block; /* Ensure it behaves like a button */
+        }
+        .button:hover {
+            background-color: #f0f0f0; /* Optional: Add a hover effect */
+        }
+        .menu-icon {
+            display: none;
+        }
+        @media (max-width: 768px), (orientation: portrait) {
+            .nav {
+                display: none;
+            }
+            .nav.mobile-nav {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+                position: fixed;
+                top: 60px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: rgba(0, 0, 0, 0.8);
+                border-radius: 10px;
+                padding: 10px;
+                z-index: 1001;
+                width: 90%; /* Adjust width for mobile view */
+            }
+            .nav a {
+                font-size: 1em;
+                text-align: center;
+                width: 100%;
+            }
+            .menu-icon {
+                display: block;
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                cursor: pointer;
+                font-size: 2em;
+                color: #fff;
+                z-index: 1002;
+            }
+            .home-button {
+                display: block;
+                top: 20px;
+                text-align: center;
+            }
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Function to handle redirection
+            const handleRedirection = () => {
+                if (window.innerWidth > 768) {
+                    window.location.href = 'index.html';
+                }
+            };
+
+            handleRedirection();
+            window.addEventListener('resize', handleRedirection);
+
+            // JavaScript to toggle the mobile menu
+            const menuIcon = document.querySelector('.menu-icon');
+            const mobileNav = document.querySelector('.nav.mobile-nav');
+            menuIcon.addEventListener('click', () => {
+                if (mobileNav.style.display === 'none' || mobileNav.style.display === '') {
+                    mobileNav.style.display = 'flex';
+                } else {
+                    mobileNav.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="menu-icon">☰</div>
+    <div class="home-button" onclick="location.href='./index.html#Welcome'">CoreVision</div>
+    <div class="nav">
+        <a href="./index.html#Welcome">Home</a>
+        <a href="./index.html#AboutUs">About Us</a>
+        <a href="./index.html#Donate">Donation</a>
+        <a href="./index.html#BS">Business Page</a>
+    </div>
+    <div class="nav mobile-nav" style="display: none;">
+        <a href="./index.html#Welcome">Home</a>
+        <a href="./index.html#AboutUs">About Us</a>
+        <a href="./index.html#Donate">Donation</a>
+        <a href="./index.html#BS">Business Page</a>
+    </div>
+
+    <section class="welcome">
+        <div class="welcometitle">CoreVision</div>
+        <div class="welcomebyline">Prabhas Kumar & Aksh Singh</div>
+    </section>
+
+    <section class="section">
+        <div class="title">NexusCAD</div>
+        <div class="description">NexusCAD redefines CAD design on MacOS by combining the power and precision of top-tier CAD applications with unmatched ease of use, all at a more affordable price. Offering robust features that cater to designers, engineers, and creators without compromising on performance, NexusCAD is the superior, cost-effective choice. Prioritizing your privacy as never seen before, NexusCAD ensures a secure and efficient design experience. Discover the future of CAD design with NexusCAD, where innovation, affordability, and unparalleled privacy converge.</div>
+    </section>
+
+    <section class="section">
+        <div class="title">VisionCAD</div>
+        <div class="description">VisionCAD revolutionizes CAD design by harnessing the power of VisionOS and Vision Pro devices, immersing you in an augmented reality environment that brings your creations to life in your physical space. More than just a visualization tool, VisionCAD is a comprehensive suite that combines the power and precision of top-tier CAD applications with unmatched ease of use and affordability. With advanced AI integration, VisionCAD significantly reduces creation time, streamlining your design process. Prioritizing your privacy as never seen before, VisionCAD ensures a secure and efficient design experience. Discover the future of augmented reality design with VisionCAD, where the cutting-edge technology of VisionOS and Vision Pro, affordability, AI-driven efficiency, and unparalleled privacy converge.</div>
+    </section>
+
+    <section class="section step">
+        <div class="title">First Step</div>
+        <div class="description">The first step is always the hardest. Be the hand that helps us take it. Even a small touch can make a huge difference in someone's journey.</div>
+        <div class="description">We created this project because we believe humanity deserves better. Yet, finding purpose and meaning is often elusive. Become that beacon for us. Give us the motivation to push forward. Be the reason we wake up every day to work on this. Fuel our passion with your support.</div>
+        <div class="description">In a world mired in bureaucracy, corruption, and greed, it's not easy to fight back, especially for college kids like us. Support us in this battle—let's conquer the unfairness of the world, even if just once.</div>
+        <a href="./index.html#Donate" class="button">Support Us</a>
+    </section>
+
+    <section class="section notify">
+        <div class="title">Launching soon!</div>
+        <div class="description">NexusCAD & VisionCAD both are under development and we are trying to launch as soon as possible.</div>
+        <a href="https://forms.gle/J9zjqz68UnntC5
+
+LN7" class="button">Notify Me</a>
+    </section>
+</body>
+</html>

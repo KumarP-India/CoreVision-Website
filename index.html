@@ -277,6 +277,16 @@
             // Add event listener for hash change
             window.addEventListener('hashchange', handleRedirection);
         });
+        document.addEventListener('DOMContentLoaded', () => {
+            const handleRedirection = () => {
+                if (window.innerWidth <= 768) {
+                    window.location.href = 'index-mobile.html';
+                }
+            };
+
+            handleRedirection();
+            window.addEventListener('resize', handleRedirection);
+        });
     </script>
     
 </head>

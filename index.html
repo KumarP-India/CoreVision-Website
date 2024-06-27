@@ -246,6 +246,9 @@
     }
     </style>
      <script>
+        if (window.location.hostname === "signup.corevision.dev") {
+            window.location.href = "/SignUp.html";
+        }
         document.addEventListener('DOMContentLoaded', () => {
             const handleRedirection = () => {
                 const isMobile = window.innerWidth <= 768;
@@ -348,7 +351,7 @@
     <section id="end">
         <h2>Launching soon!</h2>
         <p>NexusCAD & VisionCAD both are under development and we are trying to launch as soon as possible.</p>
-        <a href="./SignUp.html" class="button">Notify Me</a> 
+        <a href="https://signup.corevision.dev" class="button">Notify Me</a> 
     </section>
 
     <script>

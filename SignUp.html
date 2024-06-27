@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Form</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            background-color: #E2EEE0;
+            overflow-y: auto; /* Ensure body scrolling */
+        }
+        .form-container {
+            width: 640px; /* Set the width to match the form's width */
+            height: auto; /* Allow container to expand with form */
+            margin: 20px 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            background-color: white;
+            overflow: hidden; /* Ensure the form doesn't overflow */
+        }
+        .form-container img {
+            width: 100%;
+            height: 150px; /* Adjusted height for less cropping */
+            object-fit: cover; /* Crop the image from top and bottom */
+        }
+        iframe {
+            width: 100%;
+            height: 750px; /* Set a large enough height to fit the form */
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <img src="./Assets/CoreVision.webp" alt="CoreVision Header">
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfyQgB_rMwFc51piJwcN4T5HzAN0b4rZT8k_y8q2zaFa6xk4g/viewform?embedded=true">Loading…</iframe>
+    </div>
+</body>
+</html>
